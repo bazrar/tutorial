@@ -15,10 +15,10 @@ p {
 
 .blog-text {
   color: red;
-  line-height: 0.5;
+  line-height: 1.5;
 }
 
 .product-text {
   color: green;
-  line-height: 0.2;
+  line-height: 1.2;
 }

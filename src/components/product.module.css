@@ -1,0 +1,13 @@
+/* <! scopes css locally !> */
+
+.page {
+  background: lightcyan;
+}
+
+.page h1 {
+  color: orangered;
+}
+
+.text {
+  text-transform: capitalize;
+}

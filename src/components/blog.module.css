@@ -1,0 +1,13 @@
+/* <! scopes css locally !> */
+
+.page {
+  background: yellow;
+}
+
+.page h1 {
+  color: red;
+}
+
+.text {
+  text-transform: uppercase;
+}
