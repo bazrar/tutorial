@@ -1,22 +1,54 @@
-import React, { Component } from 'react'
-import Layout from '../components/Layout'
-import styles from '../components/product.module.css'
+import React from "react"
+import { graphql } from "gatsby"
+import Layout from "../components/Layout"
+import styles from "../components/product.module.css"
+import Image from "gatsby-image"
+import { Link } from "gatsby"
 
-export default class product extends Component {
-    render() {
-        return (
-            <Layout>
-                <div className= {styles.page} >
-                <h1>this is our product page!</h1>
-                <p className= 'product-text'>Minim cupidatat esse amet magna proident ea labore est incididunt fugiat in. Fugiat occaecat Lorem culpa ullamco eiusmod consectetur proident est officia et non cupidatat ex. Exercitation adipisicing consequat amet ea ipsum laborum eu.
-            Sint veniam nulla sint in tempor duis laborum voluptate. 
-            Magna duis pariatur reprehenderit sunt ut. 
-            Nisi ex velit nulla exercitation eiusmod. 
-            aliquip non nulla excepteur consectetur elit commodo
-            aliqua occaecat esse labore est deserunt officia.
-         </p>
-                </div>
-            </Layout>
-        )
-    }
+const ComponentName = ({ data }) => {
+  const {
+    allContentfulProduct: { nodes: products },
+  } = data
+
+  console.log(products)
+
+  return (
+    <Layout>
+      <h1>hello from products</h1>
+      <section className={styles.page}>
+        {products.map(product => {
+          //   console.log(product)
+          return (
+            <article key={product.id}>
+              <Image fluid={product.image.fluid} alt={product.title} />
+              <h3>
+                {product.title} <span>${product.price}</span>
+              </h3>
+              <Link to={`/products/${product.slug}`}>more details</Link>
+            </article>
+          )
+        })}
+      </section>
+    </Layout>
+  )
 }
+
+export const query = graphql`
+  {
+    allContentfulProduct {
+      nodes {
+        id
+        price
+        title
+        slug
+        image {
+          fluid {
+            ...GatsbyContentfulFluid
+          }
+        }
+      }
+    }
+  }
+`
+
+export default ComponentName

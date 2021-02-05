@@ -1,13 +1,39 @@
 /* <! scopes css locally !> */
 
+h1 {
+  text-align: center;
+}
 .page {
-  background: lightcyan;
-}
-
-.page h1 {
-  color: orangered;
-}
-
-.text {
+  width: 80vw;
+  margin: 0 auto;
   text-transform: capitalize;
+  overflow: hidden;
+}
+
+.page span {
+  margin-left: 2rem;
+  color: grey;
+}
+
+.page article {
+  margin: 2rem 0;
+}
+
+.page div {
+  height: 20rem;
+  width: 20rem;
+}
+
+@media screen and (min-width: 768px) {
+  .page {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 2rem;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .page {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
